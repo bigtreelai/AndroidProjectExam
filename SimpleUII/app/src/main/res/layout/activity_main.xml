@@ -20,15 +20,28 @@
         android:layout_alignParentTop="true" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/button"
+        android:id="@+id/submit"
         android:onClick="submit"
         android:nestedScrollingEnabled="false"
         android:layout_centerHorizontal="true"
-        android:textSize="36sp"
-        android:layout_below="@+id/editText" />
+        android:textSize="20sp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuButton"
+        android:layout_toLeftOf="@+id/submit"
+        android:layout_below="@+id/editText"
+        android:textSize="20sp"
+        tools:text="menu"
+        android:text="menu"
+        android:onClick="goToMenu"
+        />
 
     <EditText
         android:layout_width="match_parent"
@@ -46,9 +59,22 @@
         android:layout_height="wrap_content"
         android:text="hide"
         android:id="@+id/checkBox"
-        android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginTop="24dp"
-        android:textSize="36sp" />
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/checkBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/checkBox"/>
 </RelativeLayout>
