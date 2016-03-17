@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DrinkMenuActivity extends AppCompatActivity {
 
@@ -30,10 +36,49 @@ public class DrinkMenuActivity extends AppCompatActivity {
     public void done(View view)
     {
         Intent data =new Intent();
-        data.putExtra("result","order done");
+        //data.putExtra("result","order done");
+
+        JSONArray array = this.getData();
+        data.putExtra("result",array.toString());
         setResult(RESULT_OK,data);
         finish();
     }
+
+    public JSONArray getData()
+    {
+        LinearLayout rootLinearLayout =(LinearLayout)findViewById(R.id.root);
+        int count = rootLinearLayout.getChildCount();
+
+        JSONArray array =new JSONArray();
+
+        for(int i = 0;i<count-1;i++)
+        {
+            Log.d("testtttttttttt",new Integer(i).toString());
+            LinearLayout ll = (LinearLayout)rootLinearLayout.getChildAt(i);
+            TextView drinkNameTextView =(TextView)ll.getChildAt(0);
+            Button lButton =(Button)ll.getChildAt(1);
+            Button mButton =(Button)ll.getChildAt(2);
+
+            String drinkName =drinkNameTextView.getText().toString();
+            int lNumber = Integer.parseInt(lButton.getText().toString());
+            int mNumber = Integer.parseInt(mButton.getText().toString());
+
+
+            JSONObject object = new  JSONObject();
+            try {
+                object.put("drinkName",drinkName);
+                object.put("lNumber",lNumber);
+                object.put("mNumber",mNumber);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            array.put(object);
+        }
+        Log.d("testttttttttttttttt","55555");
+        return array;
+    }
+
+
 
 
     @Override

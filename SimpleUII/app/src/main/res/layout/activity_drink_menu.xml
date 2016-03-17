@@ -8,101 +8,97 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="tw.com.taipower.simpleuii.DrinkMenuActivity">
+    tools:context="tw.com.taipower.simpleuii.DrinkMenuActivity"
+    android:id="@+id/root">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="BlackTea"
+            android:id="@+id/textView4"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button5"
+            android:layout_weight="1"
+            android:onClick="add" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button6"
+            android:layout_weight="1"
+            android:onClick="add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="MilkTea"
+            android:id="@+id/textView3"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button3"
+            android:layout_weight="1"
+            android:onClick="add" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button4"
+            android:layout_weight="1"
+            android:onClick="add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="GreenTea"
+            android:id="@+id/textView2"
+            android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="BlackTea"
-                android:id="@+id/textView4"
-                android:layout_weight="1" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button"
+            android:layout_weight="1"
+            android:onClick="add" />
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button5"
-                android:layout_weight="1"
-                android:onClick="add" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:onClick="add" />
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button6"
-                android:layout_weight="1"
-                android:onClick="add" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="MilkTea"
-                android:id="@+id/textView3"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button3"
-                android:layout_weight="1"
-                android:onClick="add" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button4"
-                android:layout_weight="1"
-                android:onClick="add" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="GreenTea"
-                android:id="@+id/textView2"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button"
-                android:layout_weight="1"
-                android:onClick="add" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/button2"
-                android:layout_weight="1"
-                android:onClick="add" />
-
-        </LinearLayout>
     </LinearLayout>
+
 
     <LinearLayout
         android:orientation="horizontal"

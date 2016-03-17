@@ -19,6 +19,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_MENU_ACTIVITY = 0;
@@ -30,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     SharedPreferences sp;//
     SharedPreferences.Editor editor;//editor
+    String menuResult="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,13 +83,30 @@ public class MainActivity extends AppCompatActivity {
 
         hideCheckBox = (CheckBox)findViewById(R.id.checkBox);
 
-        hideCheckBox.setChecked(sp.getBoolean("hideCheckBox",false));
+        hideCheckBox.setChecked(sp.getBoolean("hideCheckBox", false));
 
         hideCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 editor.putBoolean("hideCheckBox", hideCheckBox.isChecked());
                 editor.apply();
+            }
+        });
+
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this);
+
+        ParseObject testObject = new ParseObject("HomeworkParse");
+        testObject.put("sid", "And26307");
+        testObject.put("email", "lai@gmail.com");
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null)
+                {
+                    Log.d("debug",e.toString());
+                }
             }
         });
         setListView();
@@ -105,6 +133,26 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this,"HelloWorld",Toast.LENGTH_LONG).show();
         //textView.setText("ttt");//更改text屬性
         String text = editText.getText().toString();
+
+        ParseObject orderObject =new ParseObject("Order");
+
+        orderObject.put("note",text);
+        orderObject.put("storeInfo",spinner.getSelectedItem());
+        orderObject.put("menu",menuResult);
+
+        orderObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e == null)
+                {
+                    Toast.makeText(MainActivity.this,"Submit OK",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"Submit Fail",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         Utils.writeFile(this, "history.txt", text + '\n');
 
         if(hideCheckBox.isChecked())
@@ -148,7 +196,28 @@ public class MainActivity extends AppCompatActivity {
         {
             if(resultCode == RESULT_OK)
             {
-                textView.setText(data.getStringExtra("result"));
+                //textView.setText(data.getStringExtra("result"));
+                menuResult= data.getStringExtra("result");
+                try {
+                JSONArray array =new JSONArray(menuResult);
+                    String text="";
+                    for(int i=0 ;i<array.length();i++)
+                    {
+
+
+                        JSONObject order = array.getJSONObject(i);
+
+
+                            String name =order.getString("drinkName");
+                            String lNumber =String.valueOf(order.getInt("lNumber"));
+                            String mNumber =String.valueOf(order.getInt("mNumber"));
+                        text += name+ "大杯："+ lNumber+ "、中杯："+ mNumber+ "\n";
+
+                    }
+                    textView.setText(text);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
