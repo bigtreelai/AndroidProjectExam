@@ -76,7 +76,7 @@ public class DrinkMenuActivity extends AppCompatActivity {
 
             JSONObject object = new  JSONObject();
             try {
-                object.put("drinkName",drinkName);
+                object.put("name",drinkName);
                 object.put("lNumber",lNumber);
                 object.put("mNumber",mNumber);
             } catch (JSONException e) {

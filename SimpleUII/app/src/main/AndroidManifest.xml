@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tw.com.taipower.simpleuii">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".SimpleUIApplication"
         android:allowBackup="true"
@@ -18,10 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DrinkMenuActivity"></activity>
+        <activity android:name=".DrinkMenuActivity" />
 
-
-        <!--課堂Parse的Key-->
+        <!-- 課堂Parse的Key -->
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="XcUmvcSIMJefbmJDFcidLC6mNBQEAaGHYiGPSYAS" />
@@ -29,7 +30,7 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="DnZ3ggXI55eF8ypD5bps3eBYQ0qAFCHehre5Wu6a" />
 
-        <!--作業Parse的Key-->
+        <!-- 作業Parse的Key -->
         <!--
                 <meta-data
                     android:name="com.parse.APPLICATION_ID"
@@ -37,10 +38,10 @@
                 <meta-data
                     android:name="com.parse.CLIENT_KEY"
                     android:value="sBrwCLrxZKNVk2gyXjZMuGCJhUFChUBIbxeRtuqV" />
-                -->
+        -->
 
-
-
+        <activity android:name=".OrderDetailActivity" />
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>
